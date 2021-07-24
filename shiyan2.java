@@ -1,67 +1,82 @@
 package secnd;
 
+import java.io.IOException;
 import java.util.Scanner;
-public class shiyan2 {
-	public static void main(String args[]) {// TODO Auto-generated method stub
-		System.out.println("邓凯临牌计算器");
-		System.out.println("1：加法");
-		System.out.println("2：减法");
-		System.out.println("3：除法");
-		System.out.println("4：乘法");
-		System.out.println("输入指令");
-		Scanner s=new Scanner(System.in);
-		int x=s.nextInt();
-		System.out.println(x);
-		switch(x){
-			case 1:{
-				add();
-				break;
-			}
-			case 2:{
-				sub();
-				break;
-			}
-			case 3:{
-				div();
-				break;
-			}
-			case 4:{
-				mult();
-				break;
-			}
-		}
+class opreation{
+	int a,b,c;
+	void add() {
+		
 	}
-
-	public static void add() {
-		System.out.println("输入相加的数据");
-		Scanner s=new Scanner(System.in);
-		float a=s.nextFloat();
-		float b=s.nextFloat();
-		float c=a+b;
+	void mul() {
+		
+	}
+	void sub() {
+		
+	}
+	void div() {
+		
+	}
+}
+class add extends opreation{
+	public void add(int a,int b) {
+		int c=a+b;
 		System.out.println(a+"+"+b+"="+c);
 	}
-	public static void sub() {
-		System.out.println("输入相减数据");
-		Scanner s=new Scanner(System.in);
-		float a=s.nextFloat();
-		float b=s.nextFloat();
-		float c=a-b;
-		System.out.println(a+"-"+b+"="+c);
-	}
-	public static void div() {
-		System.out.println("输入相除的数据");
-		Scanner s=new Scanner(System.in);
-		float a=s.nextFloat();
-		float b=s.nextFloat();
-		float c=a/b;
-		System.out.println(a+"/"+b+"="+c);
-	}
-	public static void mult() {
-		System.out.println("输入相乘的数据");
-		Scanner s=new Scanner(System.in);
-		float a=s.nextFloat();
-		float b=s.nextFloat();
-		float c=a*b;
+}
+class mul extends opreation{
+	public void mul(int a,int b) {
+		int c=a*b;
 		System.out.println(a+"*"+b+"="+c);
 	}
 }
+
+class sub extends opreation{
+	public void sub(int a,int b) {
+		int c=a-b;
+		System.out.println(a+"-"+b+"="+c);
+	}
+}
+
+class div extends opreation{
+	public void div(int a,int b) {
+		int c=a/b;
+		System.out.println(a+"/"+b+"="+c);
+	}
+}
+
+public class shiyan2 {
+	public static void main(String args[]) throws IOException {
+		// TODO Auto-generated method stub
+		opreation op1 = new opreation();
+		opreation op2 = new opreation();
+		Scanner s=new Scanner(System.in);
+		System.out.println("输入第一个数");
+		op1.a=s.nextInt();
+		System.out.println("输入运算符");
+		char ch = (char) System.in.read();
+		System.out.println("输入第二个数");
+		op2.b=s.nextInt();
+		char m=ch;
+		switch(m) {
+		case '+':
+			add ad=new add();
+			ad.add(op1.a,op2.b);
+			break;
+		case '*':
+			mul mu=new mul();
+			mu.mul(op1.a,op2.b);
+			break;
+		case '-':
+			sub su = new sub();
+			su.sub(op1.a, op2.b);
+			break;
+		case '/':
+			div di = new div();
+			di.div(op1.a, op2.b);
+			break;
+			
+		}
+		
+	}
+}
+
